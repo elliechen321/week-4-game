@@ -8,96 +8,110 @@
 //reset generate new random number for each crystal, generate new random number for the sum
 
 $(document).ready(function() {
-
+	// var crystalValue= 0;
 	var crystalsCounter = {
-
-		randomNumber: Math.floor(Math.random()*101+19),
+		randomNumber: 0,
+		crystalOne: 0,
+		crystalTwo: 0,
+		crystalThree: 0,
+		crystalFour: 0,
 		wins: 0,
 		losses: 0,
 		isOne: false,
 		isTwo: false,
 		isThree: false,
 		isFour: false,
-
-
-//create function to show random number in #randomNumber div
+		currentScore: 0,
 		generateNumber: function () {
-			$("#randomNumber").text(this.randomNumber);
+			var target = Math.floor(Math.random()*101+19);
+			var randOne = Math.floor(Math.random()*11+1);
+			var randTwo = Math.floor(Math.random()*11+1);
+			var randThree = Math.floor(Math.random()*11+1);
+			var randFour = Math.floor(Math.random()*11+1);
+			$("#randomNumber").text(target);
+			this.randomNumber = target;
+			this.crystalOne = randOne;
+			this.crystalTwo = randTwo;
+			this.crystalThree = randThree;
+			this.crystalFour = randFour;
 		},
-
-//if on click picture crystalOne, var playerCount = crystalOne + previous crystal picture clicked 
-//if on click picture crystalTwo, var playerCount = crystalTwo + previous crystal picture clicked
-		playerCounter: function() {
-
-			var currentScore = this.addCrystalOne(crystalOne) + this.addCrystalTwo(crystalTwo) + this.addCrystalThree(crystalThree) + this.addCrystalFour(crystalFour);
-			
-			$("#playerNumber").text(currentScore);
-		},
-
 		addCrystalOne: function() {
-
-			var crystalOne = Math.floor(Math.random()*11+1);
-			var clickOne = 0;
-
+			this.currentScore += this.crystalOne;
+			console.log(this.currentScore);
+		},
+		onClickOne: function() {
 			$("#crystalOne").on("click", function() {
-				clickOne = crystalOne;
-				console.log(crystalOne);
-				console.log(clickOne);
-				crystalsCounter.playerCounter();
+				crystalsCounter.addCrystalOne();
+				crystalsCounter.score();
+				crystalsCounter.checkWins();
 			});
-			
-
 		},
 		addCrystalTwo: function() {
-
-			var crystalTwo = Math.floor(Math.random()*11+1);
-			var clickTwo = 0;
-
+			this.currentScore += this.crystalTwo;
+			console.log(this.currentScore);
+		},
+		onClickTwo: function() {	
 			$("#crystalTwo").on("click", function() {
-				clickTwo = crystalTwo;
-				console.log(crystalTwo);
-				console.log(clickTwo);
-				$("#playerNumber").text(clickTwo);
-				this.isTwo = true;
-				crystalsCounter.playerCounter();
+				crystalsCounter.addCrystalTwo();
+				crystalsCounter.score();
+				crystalsCounter.checkWins();			
 			});
-
-
 		},
 		addCrystalThree: function() {
-			var crystalThree = Math.floor(Math.random()*11+1);
-			var clickThree = 0;
+			this.currentScore += this.crystalThree;
+			console.log(this.currentScore);
+		},
+		onClickThree: function () {
 
 			$("#crystalThree").on("click", function() {
-				clickThree = crystalThree;
-				console.log(crystalThree);
-				console.log(clickThree);
-				$("#playerNumber").text(clickThree);
-				this.isThree = true;
-				crystalsCounter.playerCounter();
+				crystalsCounter.addCrystalThree();
+				crystalsCounter.score();
+				crystalsCounter.checkWins();
 			});
 		},
 		addCrystalFour: function() {
-			var crystalFour = Math.floor(Math.random()*11+1);
-			var clickFour = 0;
-
+			this.currentScore += this.crystalFour;
+			console.log(this.currentScore);
+		},
+		onClickFour: function () {
 			$("#crystalFour").on("click", function() {
-				clickFour = crystalFour;
-				console.log(crystalFour);
-				console.log(clickFour);
-				$("#playerNumber").text(clickFour);
-				this.isFour = true;
-				crystalsCounter.playerCounter();
+				crystalsCounter.addCrystalFour();
+				crystalsCounter.score();
+				crystalsCounter.checkWins();
 			});
 		},
+		score: function () {
+			$("#playerNumber").text(this.currentScore);
+		},
 
+		checkWins: function () {
+			if (this.currentScore === this.randomNumber) {
+				this.wins++;
+				$("#wins").text("Wins: " + this.wins);
+				crystalsCounter.reset();
+			}
+			else if (this.currentScore > this.randomNumber) {
+				this.losses++;
+				$("#losses").text("Losses: " + this.losses);
+				crystalsCounter.reset();
+			}
+		},
+		reset: function() {
+			crystalsCounter.generateNumber();
+			this.currentScore = 0;
+			this.score();
+
+		},
 
 	}
 
+
+	crystalsCounter.onClickOne();
+	crystalsCounter.onClickTwo();
+	crystalsCounter.onClickThree();
+	crystalsCounter.onClickFour();
 	crystalsCounter.generateNumber();
-	crystalsCounter.addCrystalFour();
-	crystalsCounter.addCrystalThree();
-crystalsCounter.addCrystalTwo();
-crystalsCounter.addCrystalOne();
+	
+
 
 });
