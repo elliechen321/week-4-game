@@ -1,9 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>CrystalCollector</title>
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:100i,400,600i,800i" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
+	<div id="crystalheader">
+
+		<h1>Crystal Collector Game</h1>
+
+	</div>
+
+	<div id="instructions">
+		
+		<h2>Instructions</h2>
+
+		<p>You will be given a random number at the start of the game</p>
+
+		<p>There are four crystals below. By clicking on a crytal you will add a specific amount of points to your total score.</p>
+
+		<p>You win the game by matching your total score to random number; you lose the game if your total score goes above the random number.</p>
+
+		<p>The value of each crystal is hidden from you until you click on it.</p>
+
+		<p>Each time when the game starts, the game will change the value of each crystal.</p>
+	</div>
+
+		<br>
+
+	<div class="randomCrystal">
+		<div id="crystalsTocollect">
+			
+			Crystals to collect:
+
+		</div>
+
+		<div id="randomNumber">0</div>
+
+
+	</div>
+
+	<div class="gameresult">
+		<div id="wins">Wins: </div>
+
+		<div id="losses">Losses: </div>
+
+
+	</div>
+
+	<div class="crystals">
+
+		<span id="crystalOne"><img src="https://orig00.deviantart.net/42fe/f/2014/185/8/0/magical_crystal_by_gorilla_ink-d7p7hti.jpg" alt="crystal 1" style="width:200px; height: 200px;"></span>
+
+		<span id="crystalTwo"><img src="https://i.pinimg.com/originals/b2/4a/32/b24a32f9cef82ba230115132f1cf633a.jpg" alt="crystal 2" style="width:200px; height: 200px;"></span>
+
+		<span id="crystalThree"><img src="https://i.pinimg.com/236x/88/87/d7/8887d78e41a919f87bbe3e7ddb12d704--icon-design-design-ui.jpg" alt="crystal 3" style="width:200px; height: 200px;"></span>
+
+		<span id="crystalFour"><img src="https://static.comicvine.com/uploads/original/11129/111292189/5291334-shard.jpg" alt="crystal 4" style="width:200px; height: 200px;"></span>
+
+	</div>
+
+	<div class="crystalCount">
+
+		<div id="playerCount">Your Crystal Count:</div>
+
+		<div id="playerNumber">0</div>
+	</div>
+
+
+	<!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Script -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
 
 </body>
 </html>

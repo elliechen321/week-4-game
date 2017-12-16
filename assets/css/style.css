@@ -1,0 +1,55 @@
+body {
+	background-image: url("../images/rsz_february.jpg");
+	font-family: 'Barlow Condensed', sans-serif;
+}
+
+
+h1 {
+	color: blue;
+	font-size: 40px;
+	font-style: bold;
+	margin-bottom: 40px;
+}
+
+h2 {
+	font-style: bold;
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.randomCrystal {
+
+	float: left;
+}
+
+#randomNumber {
+
+	font-size: 40px;
+	font-style: bold;
+
+}
+
+.crystals {
+
+	clear: both;
+}
+
+.gameresult {
+
+	float: left;
+	margin-left:40px;
+	
+}
+
+#losses {
+	margin-top: 10px;
+}
+
+.crystalCount {
+	margin-top: 20px;
+}
+
+#playerNumber {
+	font-size: 40px;
+	font-style: bold;
+}
